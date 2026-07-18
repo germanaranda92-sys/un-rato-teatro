@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Un Rato Teatro · Clases de teatro en Barcelona</title>
+<meta name="description" content="Estudio de actuación en Barcelona. Clases de teatro para todos los niveles, con o sin experiencia. Reservá tu clase de prueba.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--black:#0d0b0a;--surface:#161210;--surface-2:#1f1916;--cream:#fcf7cd;--cream-dim:#e7e2b8;--curtain:#9c2b1e;--curtain-dk:#7f2013;--bone:#f3ecdd;--muted:#a3927c;--line:rgba(243,236,221,.12);--maxw:1180px}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--black);color:var(--bone);font-family:'Inter',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3,.display{font-family:'Bebas Neue',sans-serif;font-weight:400;line-height:.92;letter-spacing:.01em}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  .eyebrow{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--cream);font-weight:600}
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:16px 28px;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+  nav.scrolled{background:rgba(13,11,10,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .brand img{height:44px;width:auto;display:block}
+  .navlinks{display:flex;align-items:center;gap:26px;font-size:.9rem}
+  .navlinks a{color:var(--bone);opacity:.85;transition:opacity .2s}
+  .navlinks a:hover{opacity:1}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--cream);color:#2a2410;font-weight:600;font-size:.9rem;padding:12px 22px;border-radius:2px;border:1px solid transparent;cursor:pointer;transition:transform .15s,box-shadow .2s,background .2s}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(252,247,205,.22)}
+  .btn.red{background:var(--curtain);color:#fff}
+  .btn.red:hover{background:var(--curtain-dk);box-shadow:0 14px 40px rgba(156,43,30,.32)}
+  .btn.ghost{background:transparent;color:var(--bone);border:1px solid var(--line)}
+  .btn.ghost:hover{border-color:var(--cream);color:var(--cream);box-shadow:none}
+  .nav-cta{padding:10px 18px}
+  .hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;isolation:isolate;background:var(--black)}
+  .hero-bg{position:absolute;inset:-3%;z-index:-2;background:url('images/hero.jpg') center/cover no-repeat;filter:blur(3px) brightness(.5) saturate(1.05);transform:scale(1.06)}
+  .hero-scrim{position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(13,11,10,.94) 0%,rgba(13,11,10,.7) 42%,rgba(13,11,10,.35) 100%),linear-gradient(0deg,rgba(13,11,10,.7) 0%,transparent 40%)}
+  .hero-inner{position:relative;z-index:1;padding:120px 0 60px;max-width:860px}
+  .hero .eyebrow{margin-bottom:22px}
+  .marquee{font-size:clamp(3.4rem,11vw,9rem);color:var(--bone);text-shadow:0 2px 30px rgba(0,0,0,.5)}
+  .marquee .accent{color:var(--cream)}
+  .hero p.lead{font-size:clamp(1.05rem,2.2vw,1.3rem);color:#e7ddcd;max-width:560px;margin:26px 0 34px;text-shadow:0 1px 12px rgba(0,0,0,.5)}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .infobar{display:flex;flex-wrap:wrap;gap:24px;margin-top:44px;padding-top:24px;border-top:1px solid var(--line);font-size:.9rem;color:#cabca8}
+  .infobar b{color:var(--bone);font-weight:600}
+  .infobar .dot{color:var(--cream)}
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  section{padding:110px 0;position:relative}
+  [id]{scroll-margin-top:92px}
+  .sec-head{max-width:660px;margin-bottom:56px}
+  .sec-head h2{font-size:clamp(2.6rem,6vw,4.4rem);margin:14px 0 0}
+  .sec-head p{color:var(--muted);margin-top:16px;font-size:1.05rem}
+  .why{position:relative;isolation:isolate;background:url('images/why-bg.jpg') center/cover fixed}
+  .why::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(13,11,10,.88),rgba(13,11,10,.8))}
+  .why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line)}
+  .why-cell{background:rgba(13,11,10,.55);backdrop-filter:blur(4px);padding:38px 34px;transition:background .3s}
+  .why-cell:hover{background:rgba(31,25,22,.75)}
+  .why-cell .n{font-family:'Bebas Neue';font-size:1.4rem;color:var(--cream);letter-spacing:.05em}
+  .why-cell h3{font-family:'Inter';font-weight:600;font-size:1.2rem;margin:14px 0 8px;letter-spacing:0}
+  .why-cell p{color:#d8cdbb;font-size:.98rem}
+  .levels{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .level{border:1px solid var(--line);border-radius:3px;padding:34px 30px;position:relative;overflow:hidden;transition:border-color .3s,transform .3s}
+  .level:hover{border-color:var(--cream);transform:translateY(-6px)}
+  .level .num{position:absolute;top:-18px;right:6px;font-family:'Bebas Neue';font-size:7rem;color:rgba(252,247,205,.10);line-height:1}
+  .level .tag{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  .level h3{font-size:2.2rem;margin:8px 0 16px}
+  .level p{color:var(--muted);font-size:.96rem;position:relative;z-index:1}
+  /* HORARIOS */
+  .schedule{border:1px solid var(--line);border-radius:6px;overflow:hidden}
+  .srow{display:grid;grid-template-columns:.8fr .9fr 1fr 1.8fr;gap:16px;padding:18px 26px;border-top:1px solid var(--line);align-items:center}
+  .srow:first-child{border-top:none}
+  .shead{background:var(--surface);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  .srow:not(.shead) span:first-child{font-weight:600;color:var(--bone)}
+  .srow:not(.shead) span:nth-child(2){color:var(--cream);font-weight:600}
+  .srow:not(.shead) span:nth-child(4){color:var(--muted)}
+  .philo{background:var(--surface)}
+  .philo-quote{max-width:840px;margin:0 auto 80px;text-align:center}
+  .philo-quote p{font-family:'Bebas Neue';font-size:clamp(1.8rem,4.4vw,3rem);line-height:1.05;color:var(--bone)}
+  .philo-quote .accent{color:var(--cream)}
+  .philo-quote cite{display:block;margin-top:22px;font-style:normal;font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  .team{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+  .member{background:var(--black);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+  .member .ph{aspect-ratio:4/3;overflow:hidden;background:var(--surface-2)}
+  .member .ph img{width:100%;height:100%;object-fit:cover;object-position:center 25%;transition:transform .5s}
+  .member:hover .ph img{transform:scale(1.04)}
+  .member .body{padding:26px 28px}
+  .member h3{font-size:2rem}
+  .member .role{color:var(--cream);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;margin:6px 0 14px}
+  .member p{color:var(--muted);font-size:.94rem}
+  .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .qcard{border:1px solid var(--line);border-radius:4px;padding:30px 28px;background:var(--surface);display:flex;flex-direction:column}
+  .qcard .stars{color:var(--cream);letter-spacing:3px;font-size:.9rem}
+  .qcard blockquote{font-size:1.02rem;margin:16px 0;color:var(--bone);flex:1}
+  .qcard .who{color:var(--muted);font-size:.85rem;font-weight:600}
+  .qcard .who span{color:var(--cream-dim);font-weight:400}
+  .cartel{background:var(--surface)}
+  .flyers{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .flyer{position:relative;aspect-ratio:2/3;border-radius:4px;overflow:hidden;border:1px solid var(--line);background:var(--surface-2);transition:transform .35s}
+  .flyer:hover{transform:translateY(-6px)}
+  .flyer img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+  .flyer:hover img{transform:scale(1.05)}
+  .flyer .cap{position:absolute;left:0;right:0;bottom:0;padding:20px 18px 16px;background:linear-gradient(180deg,transparent,rgba(13,11,10,.92));font-family:'Bebas Neue';font-size:1.6rem;letter-spacing:.02em}
+  .flyer .cap small{display:block;font-family:'Inter';font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cream);font-weight:600;margin-top:3px}
+  .cls-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  .img-frame{position:relative;aspect-ratio:4/5;border-radius:6px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px rgba(0,0,0,.5)}
+  .img-frame img{width:100%;height:100%;object-fit:cover}
+  .cls-text h2{font-size:clamp(2.4rem,5vw,3.6rem);margin-bottom:18px}
+  .cls-text p{color:var(--muted);margin-bottom:16px}
+  .cls-list{list-style:none;margin:20px 0 28px;display:grid;gap:12px}
+  .cls-list li{display:flex;gap:12px;align-items:flex-start;font-size:.98rem}
+  .cls-list .mk{color:var(--cream);font-weight:700}
+  .convert{position:relative;overflow:hidden;background:var(--surface)}
+  .convert::before{content:"";position:absolute;top:-30vh;left:50%;transform:translateX(-50%);width:70vw;height:60vh;pointer-events:none;background:radial-gradient(ellipse at center,rgba(252,247,205,.14),rgba(252,247,205,0) 70%)}
+  .convert-inner{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;position:relative}
+  .convert h2{font-size:clamp(2.8rem,6vw,4.6rem);margin-bottom:18px}
+  .convert .lead{color:var(--muted);margin-bottom:28px;font-size:1.05rem}
+  .facts{display:grid;gap:16px;margin-top:26px}
+  .fact{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+  .fact span:first-child{color:var(--muted);font-size:.9rem}
+  .fact span:last-child{font-weight:600}
+  .lead-form{background:var(--black);border:1px solid var(--line);border-radius:6px;padding:34px 32px}
+  .lead-form h3{font-family:'Inter';font-weight:600;font-size:1.25rem;margin-bottom:6px}
+  .lead-form .sub{color:var(--muted);font-size:.9rem;margin-bottom:20px}
+  .lead-form iframe{width:100%;border:0;background:transparent}
+  footer{padding:60px 0 40px;border-top:1px solid var(--line)}
+  .foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:center}
+  .foot .brand img{height:38px}
+  .foot-meta{color:var(--muted);font-size:.85rem;display:flex;gap:22px;flex-wrap:wrap;align-items:center}
+  .foot-meta a:hover{color:var(--cream)}
+  @media(max-width:880px){
+    .navlinks{display:none}
+    .why-grid,.levels,.team,.quotes,.flyers,.cls-grid,.convert-inner{grid-template-columns:1fr}
+    .flyers{grid-template-columns:repeat(2,1fr)}
+    .cls-grid,.convert-inner{gap:40px}
+    section{padding:80px 0}
+    .why{background-attachment:scroll}
+    .shead{display:none}
+    .srow{grid-template-columns:1fr;gap:4px;padding:20px}
+    .srow:not(.shead) span:first-child{font-family:'Bebas Neue';font-size:1.5rem}
+  }
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a class="brand" href="#top"><img src="images/logo.png" alt="Un Rato Teatro"></a>
+  <div class="navlinks">
+    <a href="#por-que">Por qué teatro</a>
+    <a href="#niveles">Niveles</a>
+    <a href="#horarios">Horarios</a>
+    <a href="#cartel">En cartel</a>
+    <a class="btn nav-cta red" href="#reservar">Clase de prueba</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-scrim"></div>
+  <div class="wrap hero-inner">
+    <div class="eyebrow">Estudio de actuación · Barcelona</div>
+    <h1 class="marquee">Actuamos para <span class="accent">conectar</span>,<br>no para fingir.</h1>
+    <p class="lead">Clases de teatro en Barcelona para todos los niveles, con o sin experiencia. El primer paso es venir una vez y probar. El resto pasa solo.</p>
+    <div class="hero-cta">
+      <a class="btn red" href="#reservar">Reservá tu clase de prueba</a>
+      <a class="btn ghost" href="#niveles">Ver los niveles</a>
+    </div>
+    <div class="infobar">
+      <span><span class="dot">&#9679;</span> Próxima camada: <b>Septiembre 2026</b></span>
+      <span><span class="dot">&#9679;</span> Grupos reducidos <b>(máx. 12)</b></span>
+      <span><span class="dot">&#9679;</span> <b>Con o sin</b> experiencia</span>
+    </div>
+  </div>
+</header>
+
+<section class="why" id="por-que">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="eyebrow">¿Por qué hacer teatro?</div><h2>No venís a aprender a fingir.<br>Venís a estar presente.</h2></div>
+    <div class="why-grid reveal">
+      <div class="why-cell"><div class="n">01</div><h3>Reconectás con tu cuerpo</h3><p>Salís del piloto automático y volvés al aquí y ahora. La cabeza descansa; el cuerpo vuelve a jugar.</p></div>
+      <div class="why-cell"><div class="n">02</div><h3>Ganás seguridad real</h3><p>Tu voz, tu expresión y tu presencia se entrenan como cualquier músculo. Se nota dentro y fuera del escenario.</p></div>
+      <div class="why-cell"><div class="n">03</div><h3>Un espacio sin juicios</h3><p>Conocés gente y compartís desde el juego, no desde la exigencia. Acá nadie viene a impresionar a nadie.</p></div>
+      <div class="why-cell"><div class="n">04</div><h3>Te descubrís actuando</h3><p>Actuar es un viaje hacia adentro. No es terapia, pero es profundamente liberador igual.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="niveles">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="eyebrow">El recorrido</div><h2>Tres años. Un camino.</h2><p>Empezás donde estás. No hace falta experiencia para el primero; sí ganas para todos.</p></div>
+    <div class="levels reveal">
+      <div class="level"><div class="num">1</div><div class="tag">Sin experiencia</div><h3>Primer año</h3><p>Para quienes empiezan de cero. Entrenamiento, improvisación y expresión. El año en que perdés el miedo a jugar.</p></div>
+      <div class="level"><div class="num">2</div><div class="tag">Con base</div><h3>Segundo año</h3><p>Monólogos, personajes y escenas. Más compromiso y profundidad. Empezás a construir tu propia caja de herramientas.</p></div>
+      <div class="level"><div class="num">3</div><div class="tag">Avanzado</div><h3>Tercer año</h3><p>Montaje de una obra completa: ensayos, puesta y funciones abiertas al público. Un proceso profundo y transformador.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="horarios">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="eyebrow">Días y horarios</div><h2>¿Cuándo nos vemos?</h2><p>Grupos semanales en Barcelona. Estos son los horarios de la próxima temporada.</p></div>
+    <div class="schedule reveal">
+      <div class="srow shead"><span>Día</span><span>Nivel</span><span>Horario</span><span>Sede</span></div>
+      <div class="srow"><span>Lunes</span><span>1er año</span><span>18:00 – 20:00</span><span>L&#8217;Estranger Espai Cultural</span></div>
+      <div class="srow"><span>Lunes</span><span>3er año</span><span>20:00 – 22:30</span><span>L&#8217;Estranger Espai Cultural</span></div>
+      <div class="srow"><span>Martes</span><span>2do año</span><span>18:00 – 20:00</span><span>L&#8217;Estranger Espai Cultural</span></div>
+      <div class="srow"><span>Jueves</span><span>3er año</span><span>20:00 – 22:30</span><span>Sala Off</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="philo" id="equipo">
+  <div class="wrap">
+    <div class="philo-quote reveal"><p>"La actuación es un viaje para adentro. A lo que somos. Para que después el personaje atraviese nuestra naturaleza y algo de la vida <span class="accent">se revele</span>."</p><cite>Inés Pascual</cite></div>
+    <div class="sec-head reveal"><div class="eyebrow">Quién te acompaña</div><h2>El equipo</h2></div>
+    <div class="team reveal">
+      <article class="member"><div class="ph"><img src="images/delfi.jpg" alt="Delfina Caride" loading="lazy"></div><div class="body"><h3>Delfina Caride</h3><div class="role">Directora</div><p>Actriz, directora y productora. Egresada en arte dramático del CIC (Buenos Aires). Su gran maestra fue Inés Pascual, en Entre Cajas. Máster en Dirección y Producción Cinematográfica en FX Animation, Barcelona. En 2021 fundó Un Rato Teatro para abrir la formación teatral a cualquiera, con o sin experiencia.</p></div></article>
+      <article class="member"><div class="ph"><img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/WlRZkK9KOs8W7cg2qeCa/media/6895b269b0a66a583e3c51c2.jpeg" alt="Julieta Barmaymon" loading="lazy"></div><div class="body"><h3>Julieta Barmaymon</h3><div class="role">Docente</div><p>Actriz, docente y productora. Egresada del Instituto de Actuación de Montevideo. Formó parte de la compañía La Caja Negra (Uruguay). Su trabajo más reciente fue una pieza de la colección Sinergia, en Entelekia Arte, Barcelona. Da clase desde el aquí y el ahora: el estado de presencia total.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<section id="testimonios">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="eyebrow">Lo que dicen</div><h2>Preguntale a quien ya subió.</h2></div>
+    <div class="quotes reveal">
+      <div class="qcard"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>"Era mi primera vez haciendo teatro y tuve la suerte de que fuera con URT. Risas, bailes, improvisaciones, lágrimas... Espero cada miércoles para juntarme con un grupo humano increíble."</blockquote><div class="who">Alumna <span>· 40 años</span></div></div>
+      <div class="qcard"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>"Hice mi primera experiencia de teatro con Delfi, recién aterrizada en Barcelona. Pude llorar y atravesar los fantasmas del 'no puedo'. Me sentí muy contenida. Siempre agradecida."</blockquote><div class="who">Lucía Casco <span>· 60 años</span></div></div>
+      <div class="qcard"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>"Un espacio donde dejo de lado mis miedos y prejuicios para fluir en libertad, como jugar de nuevo siendo chico. Terminé conociéndome y aceptándome más."</blockquote><div class="who">Lucas Marcos <span>· 32 años</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cartel" id="cartel">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="eyebrow">En cartel</div><h2>Nuestras obras</h2><p>Cada año termina en escena, frente a público. Esto es lo que montamos.</p></div>
+    <div class="flyers reveal">
+      <div class="flyer"><img src="images/flyer-lo-que-no-ves.jpg" alt="Lo que no ves de mí"><div class="cap">Lo que no ves de mí<small>Monólogos · Sala La Off</small></div></div>
+      <div class="flyer"><img src="images/flyer-shots.jpg" alt="Shots &amp; Shots"><div class="cap">Shots &amp; Shots<small>Murder mistery · Tribu El Born</small></div></div>
+      <div class="flyer"><img src="images/flyer-wabi-sabi.jpg" alt="Wabi-Sabi"><div class="cap">Wabi-Sabi<small>Monólogos · BCN Poblenou</small></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="clases">
+  <div class="wrap cls-grid">
+    <div class="img-frame reveal"><img src="images/se-aprende-jugando.jpg" alt="Clase de Un Rato Teatro" loading="lazy"></div>
+    <div class="cls-text reveal">
+      <div class="eyebrow">Cómo son las clases</div><h2>Se aprende jugando.</h2>
+      <p>Ejercicios, juegos, improvisaciones y trabajo con texto. Un enfoque lúdico y progresivo donde desarrollás tu presencia, tu escucha y tu creatividad, clase a clase.</p>
+      <ul class="cls-list">
+        <li><span class="mk">&#8594;</span> Grupos reducidos para que a nadie se le escape su turno.</li>
+        <li><span class="mk">&#8594;</span> Cada clase suma una herramienta nueva a tu caja.</li>
+        <li><span class="mk">&#8594;</span> Del ejercicio corporal al montaje: un camino claro.</li>
+      </ul>
+      <a class="btn ghost" href="https://vimeo.com/917486950" target="_blank" rel="noopener">Ver video de una clase</a>
+    </div>
+  </div>
+</section>
+
+<section class="convert" id="reservar">
+  <div class="wrap convert-inner">
+    <div class="reveal">
+      <div class="eyebrow">Reservá tu lugar</div><h2>Probá una clase.<br>Después decidís.</h2>
+      <p class="lead">Vení una vez, sentí cómo es y recién ahí te comprometés. Dejanos tus datos y coordinamos tu clase de prueba.</p>
+      <div class="facts">
+        <div class="fact"><span>Próxima camada</span><span>Septiembre 2026</span></div>
+        <div class="fact"><span>Modalidad</span><span>Presencial · Barcelona</span></div>
+        <div class="fact"><span>Sedes</span><span>L&#8217;Estranger · Sala Off</span></div>
+        <div class="fact"><span>Cupos</span><span>Limitados (máx. 12)</span></div>
+      </div>
+    </div>
+    <div class="lead-form reveal">
+      <h3>Clase de prueba</h3><div class="sub">Dejanos tus datos y coordinamos tu clase de prueba.</div>
+      <iframe data-tally-src="https://tally.so/embed/3EOBbr?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="309" frameborder="0" marginheight="0" marginwidth="0" title="URT - Form Corto"></iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <a class="brand" href="#top"><img src="images/logo.png" alt="Un Rato Teatro"></a>
+    <div class="foot-meta"><span>Barcelona, España</span><a href="tel:+34645073992">645 07 39 92</a><a href="https://www.instagram.com/unratoteatro" target="_blank" rel="noopener">Instagram</a><span>© 2026 Un Rato Teatro</span></div>
+  </div>
+</footer>
+
+<script>
+  const nav=document.getElementById('nav');
+  addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40));
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.14});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+<script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+</body>
+</html>
