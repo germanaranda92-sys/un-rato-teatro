@@ -33,7 +33,7 @@
   .hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;isolation:isolate;background:var(--black)}
   .hero-bg{position:absolute;inset:-3%;z-index:-2;background:url('images/hero.jpg') center/cover no-repeat;filter:blur(3px) brightness(.5) saturate(1.05);transform:scale(1.06)}
   .hero-scrim{position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(13,11,10,.94) 0%,rgba(13,11,10,.7) 42%,rgba(13,11,10,.35) 100%),linear-gradient(0deg,rgba(13,11,10,.7) 0%,transparent 40%)}
-  .hero-inner{position:relative;z-index:1;padding:120px 0 60px;max-width:860px}
+  .hero-inner{position:relative;z-index:1;padding:120px 28px 60px;max-width:916px}
   .hero .eyebrow{margin-bottom:22px}
   .marquee{font-size:clamp(3.4rem,11vw,9rem);color:var(--bone);text-shadow:0 2px 30px rgba(0,0,0,.5)}
   .marquee .accent{color:var(--cream)}
@@ -73,6 +73,9 @@
   .sclass .day{font-weight:600;color:var(--cream);font-size:.95rem}
   .sclass .time{color:var(--bone);font-size:.95rem}
   .sclass .place{color:var(--muted);font-size:.88rem}
+  .sclass.full .day,.sclass.full .time{opacity:.65}
+  .soldout{display:inline-block;margin-left:8px;font-style:normal;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--curtain);border:1px solid var(--curtain);border-radius:2px;padding:2px 7px;vertical-align:middle;font-weight:600}
+  .why .sec-head p{color:#e2d9c9}
   .philo{background:var(--surface)}
   .philo-quote{max-width:840px;margin:0 auto 80px;text-align:center}
   .philo-quote p{font-family:'Bebas Neue';font-size:clamp(1.8rem,4.4vw,3rem);line-height:1.05;color:var(--bone)}
@@ -81,7 +84,7 @@
   .team{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
   .member{background:var(--black);border:1px solid var(--line);border-radius:4px;overflow:hidden}
   .member .ph{aspect-ratio:4/3;overflow:hidden;background:var(--surface-2)}
-  .member .ph img{width:100%;height:100%;object-fit:cover;object-position:center 25%;transition:transform .5s}
+  .member .ph img{width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .5s}
   .member:hover .ph img{transform:scale(1.04)}
   .member .body{padding:26px 28px}
   .member h3{font-size:2rem}
@@ -94,9 +97,14 @@
   .qcard .who{color:var(--muted);font-size:.85rem;font-weight:600}
   .qcard .who span{color:var(--cream-dim);font-weight:400}
   .cartel{background:var(--surface)}
-  .flyers{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-  .flyer{position:relative;aspect-ratio:2/3;border-radius:4px;overflow:hidden;border:1px solid var(--line);background:var(--surface-2);transition:transform .35s}
+  .carousel{position:relative}
+  .flyers{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:4px 2px 10px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .flyers::-webkit-scrollbar{display:none}
+  .flyer{flex:0 0 calc((100% - 44px)/3);scroll-snap-align:start;position:relative;aspect-ratio:2/3;border-radius:4px;overflow:hidden;border:1px solid var(--line);background:var(--surface-2);transition:transform .35s}
   .flyer:hover{transform:translateY(-6px)}
+  .cnav{display:flex;gap:10px;justify-content:flex-end;margin-top:18px}
+  .cbtn{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--bone);font-size:1.1rem;cursor:pointer;transition:border-color .2s,color .2s,background .2s}
+  .cbtn:hover{border-color:var(--cream);color:var(--cream);background:rgba(252,247,205,.06)}
   .flyer img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
   .flyer:hover img{transform:scale(1.05)}
   .flyer .cap{position:absolute;left:0;right:0;bottom:0;padding:20px 18px 16px;background:linear-gradient(180deg,transparent,rgba(13,11,10,.92));font-family:'Bebas Neue';font-size:1.6rem;letter-spacing:.02em}
@@ -109,6 +117,10 @@
   .cls-list{list-style:none;margin:20px 0 28px;display:grid;gap:12px}
   .cls-list li{display:flex;gap:12px;align-items:flex-start;font-size:.98rem}
   .cls-list .mk{color:var(--cream);font-weight:700}
+  .midcta{background:var(--surface)}
+  .midcta-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  .midcta h2{font-size:clamp(2.2rem,4.6vw,3.4rem);margin-bottom:14px}
+  .midcta p{color:var(--muted);font-size:1rem}
   .convert{position:relative;overflow:hidden;background:var(--surface)}
   .convert::before{content:"";position:absolute;top:-30vh;left:50%;transform:translateX(-50%);width:70vw;height:60vh;pointer-events:none;background:radial-gradient(ellipse at center,rgba(252,247,205,.14),rgba(252,247,205,0) 70%)}
   .convert-inner{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;position:relative}
@@ -118,10 +130,32 @@
   .fact{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
   .fact span:first-child{color:var(--muted);font-size:.9rem}
   .fact span:last-child{font-weight:600}
-  .lead-form{background:var(--black);border:1px solid var(--line);border-radius:6px;padding:34px 32px}
-  .lead-form h3{font-family:'Inter';font-weight:600;font-size:1.25rem;margin-bottom:6px}
-  .lead-form .sub{color:var(--muted);font-size:.9rem;margin-bottom:20px}
-  .lead-form iframe{width:100%;border:0;background:transparent;min-height:520px}
+  .mobshot{display:none}
+  /* --- menú móvil --- */
+  .navmob{display:none;align-items:center;gap:12px}
+  .navmob .nav-cta{padding:9px 14px;font-size:.8rem}
+  .burger{width:42px;height:38px;display:flex;flex-direction:column;justify-content:center;gap:5px;
+    background:transparent;border:1px solid var(--line);border-radius:3px;cursor:pointer;padding:0 9px}
+  .burger span{display:block;height:2px;background:var(--bone);border-radius:2px;transition:transform .3s,opacity .2s}
+  .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .burger.open span:nth-child(2){opacity:0}
+  .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .mobmenu{position:fixed;inset:0;z-index:45;display:none;flex-direction:column;justify-content:center;gap:6px;
+    padding:90px 28px 40px;background:rgba(13,11,10,.98);backdrop-filter:blur(8px);
+    opacity:0;transform:translateY(-12px);transition:opacity .28s ease,transform .28s ease}
+  .mobmenu.open{opacity:1;transform:none}
+  .mobmenu a{font-family:'Bebas Neue',sans-serif;font-size:2.1rem;line-height:1.15;color:var(--bone);
+    padding:8px 0;border-bottom:1px solid var(--line)}
+  .mobmenu a:last-child{border-bottom:none}
+  .mobmenu .mm-cta{margin-top:22px;background:var(--curtain);color:#fff;font-family:'Inter',sans-serif;
+    font-size:1rem;font-weight:600;text-align:center;padding:16px;border-radius:3px}
+  body.nav-open{overflow:hidden}
+  /* panel claro: el form de Tally usa texto negro sobre fondo transparente */
+  .lead-form{background:#fff;border:1px solid rgba(26,21,18,.10);border-radius:8px;padding:28px 26px;
+    box-shadow:0 24px 60px rgba(0,0,0,.35)}
+  .lead-form h3{font-family:'Inter';font-weight:600;font-size:1.2rem;margin-bottom:6px;color:#1a1512;letter-spacing:0}
+  .lead-form .sub{color:#6b6155;font-size:.9rem;margin-bottom:18px}
+  .lead-form iframe{width:100%;border:0;background:transparent;min-height:380px;display:block;transition:height .25s ease}
   footer{padding:60px 0 40px;border-top:1px solid var(--line)}
   .foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:center}
   .foot .brand img{height:38px}
@@ -129,14 +163,21 @@
   .foot-meta a:hover{color:var(--cream)}
   @media(max-width:880px){
     .navlinks{display:none}
-    .why-grid,.levels,.team,.quotes,.flyers,.cls-grid,.convert-inner,.sched2{grid-template-columns:1fr}
-    .flyers{grid-template-columns:repeat(2,1fr)}
+    .why-grid,.levels,.team,.quotes,.flyers,.cls-grid,.convert-inner,.sched2,.midcta-inner{grid-template-columns:1fr}
+    .flyer{flex:0 0 78%}
     .cls-grid,.convert-inner{gap:40px}
     section{padding:80px 0}
     .why{background-attachment:scroll}
-    .shead{display:none}
-    .srow{grid-template-columns:1fr;gap:4px;padding:20px}
-    .srow:not(.shead) span:first-child{font-family:'Bebas Neue';font-size:1.5rem}
+    .navmob{display:flex}
+    .hero{min-height:auto}
+    .hero-inner{padding:130px 28px 70px}
+    .infobar{flex-direction:column;gap:12px;margin-top:36px}
+    .mobshot{display:block;position:relative;line-height:0}
+    .mobshot img{width:100%;height:58vh;object-fit:cover;display:block}
+    .mobshot::after{content:"";position:absolute;inset:0;pointer-events:none;
+      background:linear-gradient(180deg,rgba(13,11,10,.65) 0%,rgba(13,11,10,.12) 38%,rgba(13,11,10,.9) 100%)}
+    .hero-scrim{background:linear-gradient(180deg,rgba(13,11,10,.72) 0%,rgba(13,11,10,.82) 55%,rgba(13,11,10,.93) 100%)}
+    .brand img{height:36px}
   }
   @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
 </style>
@@ -146,7 +187,7 @@
 <nav id="nav">
   <a class="brand" href="#top"><img src="images/logo.png" alt="Un Rato Teatro"></a>
   <div class="navlinks">
-    <a href="#por-que">Por qué teatro</a>
+    <a href="#por-que">Por qu&eacute; teatro</a>
     <a href="#niveles">Niveles</a>
     <a href="#equipo">Nosotros</a>
     <a href="#clases">Clases</a>
@@ -154,15 +195,28 @@
     <a href="#cartel">En cartel</a>
     <a class="btn nav-cta red" href="#reservar">Clase de prueba</a>
   </div>
+  <div class="navmob">
+    <a class="btn nav-cta red" href="#reservar">Clase de prueba</a>
+    <button class="burger" id="burger" aria-label="Abrir men&uacute;" aria-expanded="false" aria-controls="mobmenu"><span></span><span></span><span></span></button>
+  </div>
 </nav>
+<div class="mobmenu" id="mobmenu">
+  <a href="#por-que">Por qu&eacute; teatro</a>
+  <a href="#niveles">Niveles</a>
+  <a href="#equipo">Nosotros</a>
+  <a href="#clases">Clases</a>
+  <a href="#horarios">Horarios</a>
+  <a href="#cartel">En cartel</a>
+  <a class="mm-cta" href="#reservar">Reserv&aacute; tu clase de prueba</a>
+</div>
 
 <header class="hero" id="top">
   <div class="hero-bg"></div>
   <div class="hero-scrim"></div>
   <div class="wrap hero-inner">
     <div class="eyebrow">Estudio de actuación · Barcelona</div>
-    <h1 class="marquee">Actuamos para <span class="accent">conectar</span>,<br>no para fingir.</h1>
-    <p class="lead">Clases de teatro en Barcelona para todos los niveles, con o sin experiencia. El primer paso es venir una vez y probar. El resto pasa solo.</p>
+    <h1 class="marquee">Actuar es <span class="accent">no actuar</span>.</h1>
+    <p class="lead">Es volver a ser genuinamente expresivo arriba de un escenario.</p>
     <div class="hero-cta">
       <a class="btn red" href="#reservar">Reservá tu clase de prueba</a>
       <a class="btn ghost" href="#niveles">Ver los niveles</a>
@@ -175,9 +229,11 @@
   </div>
 </header>
 
+<div class="mobshot"><img src="images/mobile-grupo.jpg" alt="Grupo de Un Rato Teatro" loading="lazy"></div>
+
 <section class="why" id="por-que">
   <div class="wrap">
-    <div class="sec-head reveal"><div class="eyebrow">¿Por qué hacer teatro?</div><h2>No venís a aprender a fingir.<br>Venís a estar presente.</h2></div>
+    <div class="sec-head reveal"><div class="eyebrow">¿Por qué hacer teatro?</div><h2>El teatro revela<br>lo que la vida esconde.</h2><p>A través de diferentes técnicas, la idea es que construyas tu propia caja de herramientas de actuación para estar presente, disponible y verdadero arriba de un escenario. Y por qué no, trasladarlo a la vida misma.</p></div>
     <div class="why-grid reveal">
       <div class="why-cell"><div class="n">01</div><h3>Reconectás con tu cuerpo</h3><p>Salís del piloto automático y volvés al aquí y ahora. La cabeza descansa; el cuerpo vuelve a jugar.</p></div>
       <div class="why-cell"><div class="n">02</div><h3>Ganás seguridad real</h3><p>Tu voz, tu expresión y tu presencia se entrenan como cualquier músculo. Se nota dentro y fuera del escenario.</p></div>
@@ -213,8 +269,21 @@
       <div class="syear">
         <h3>3er año</h3>
         <div class="sclass"><span class="day">Lunes</span><span class="time">20:00 – 22:30</span><span class="place">L&#8217;Estranger Espai Cultural</span></div>
-        <div class="sclass"><span class="day">Jueves</span><span class="time">20:00 – 22:30</span><span class="place">Sala Off</span></div>
+        <div class="sclass full"><span class="day">Jueves <em class="soldout">Plazas agotadas</em></span><span class="time">20:00 – 22:30</span><span class="place">Sala Off</span></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="midcta" id="reservar-top">
+  <div class="wrap midcta-inner">
+    <div class="reveal">
+      <div class="eyebrow">Reserv&aacute; tu lugar</div>
+      <h2>&iquest;Te tienta?<br>Prob&aacute; una clase.</h2>
+      <p>Ven&iacute; una vez, sent&iacute; c&oacute;mo es y reci&eacute;n ah&iacute; te comprometés. Dejanos tus datos y coordinamos tu clase de prueba.</p>
+    </div>
+    <div class="lead-form reveal">
+      <iframe src="https://tally.so/embed/3EOBbr?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="420" frameborder="0" title="URT - Form Corto"></iframe>
     </div>
   </div>
 </section>
@@ -225,7 +294,7 @@
     <div class="sec-head reveal"><div class="eyebrow">Quién te acompaña</div><h2>El equipo</h2></div>
     <div class="team reveal">
       <article class="member"><div class="ph"><img src="images/delfi.jpg" alt="Delfina Caride" loading="lazy"></div><div class="body"><h3>Delfina Caride</h3><div class="role">Directora</div><p>Actriz, directora y productora. Egresada en arte dramático del CIC (Buenos Aires). Su gran maestra fue Inés Pascual, en Entre Cajas. Máster en Dirección y Producción Cinematográfica en FX Animation, Barcelona. En 2021 fundó Un Rato Teatro para abrir la formación teatral a cualquiera, con o sin experiencia.</p></div></article>
-      <article class="member"><div class="ph"><img src="https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://assets.cdn.filesafe.space/WlRZkK9KOs8W7cg2qeCa/media/6895b269b0a66a583e3c51c2.jpeg" alt="Julieta Barmaymon" loading="lazy"></div><div class="body"><h3>Julieta Barmaymon</h3><div class="role">Docente</div><p>Actriz, docente y productora. Egresada del Instituto de Actuación de Montevideo. Formó parte de la compañía La Caja Negra (Uruguay). Su trabajo más reciente fue una pieza de la colección Sinergia, en Entelekia Arte, Barcelona. Da clase desde el aquí y el ahora: el estado de presencia total.</p></div></article>
+      <article class="member"><div class="ph"><img src="images/juli.jpg" alt="Julieta Barmaymon" loading="lazy"></div><div class="body"><h3>Julieta Barmaymon</h3><div class="role">Docente</div><p>Actriz, docente y productora. Egresada del Instituto de Actuación de Montevideo. Formó parte de la compañía La Caja Negra (Uruguay). Su trabajo más reciente fue una pieza de la colección Sinergia, en Entelekia Arte, Barcelona. Da clase desde el aquí y el ahora: el estado de presencia total.</p></div></article>
     </div>
   </div>
 </section>
@@ -244,10 +313,16 @@
 <section class="cartel" id="cartel">
   <div class="wrap">
     <div class="sec-head reveal"><div class="eyebrow">En cartel</div><h2>Nuestras obras</h2><p>Cada año termina en escena, frente a público. Esto es lo que montamos.</p></div>
-    <div class="flyers reveal">
-      <div class="flyer"><img src="images/flyer-lo-que-no-ves.jpg" alt="Lo que no ves de mí"><div class="cap">Lo que no ves de mí<small>Monólogos · Sala La Off</small></div></div>
-      <div class="flyer"><img src="images/flyer-shots.jpg" alt="Shots &amp; Shots"><div class="cap">Shots &amp; Shots<small>Murder mistery · Tribu El Born</small></div></div>
-      <div class="flyer"><img src="images/flyer-wabi-sabi.jpg" alt="Wabi-Sabi"><div class="cap">Wabi-Sabi<small>Monólogos · BCN Poblenou</small></div></div>
+    <div class="carousel reveal">
+      <div class="flyers" id="flyerTrack">
+        <div class="flyer"><img src="images/flyer-lo-que-no-ves.jpg" alt="Lo que no ves de mí" loading="lazy"><div class="cap">Lo que no ves de mí<small>Monólogos · Sala La Off</small></div></div>
+        <div class="flyer"><img src="images/flyer-shots.jpg" alt="Shots & Shots" loading="lazy"><div class="cap">Shots &amp; Shots<small>Murder mistery · Tribu El Born</small></div></div>
+        <div class="flyer"><img src="images/flyer-wabi-sabi.jpg" alt="Wabi-Sabi" loading="lazy"><div class="cap">Wabi-Sabi<small>Monólogos · BCN Poblenou</small></div></div>
+        <div class="flyer"><img src="images/flyer-si-la-sombra.jpg" alt="Si la sombra llevara su nombre" loading="lazy"><div class="cap">Si la sombra llevara su nombre<small>Improvisación · Chez Xefo</small></div></div>
+        <div class="flyer"><img src="images/flyer-lo-que-no-supimos.jpg" alt="Lo que no supimos decir" loading="lazy"><div class="cap">Lo que no supimos decir<small>Cada loco con su tema · L&#8217;Estranger</small></div></div>
+        <div class="flyer"><img src="images/flyer-sin-editar.jpg" alt="Sin editar" loading="lazy"><div class="cap">Sin editar<small>Monólogos · L&#8217;Estranger</small></div></div>
+      </div>
+      <div class="cnav"><button class="cbtn" onclick="slideFlyers(-1)" aria-label="Anterior">&#8592;</button><button class="cbtn" onclick="slideFlyers(1)" aria-label="Siguiente">&#8594;</button></div>
     </div>
   </div>
 </section>
@@ -263,7 +338,7 @@
         <li><span class="mk">&#8594;</span> Cada clase suma una herramienta nueva a tu caja.</li>
         <li><span class="mk">&#8594;</span> Del ejercicio corporal al montaje: un camino claro.</li>
       </ul>
-      <a class="btn ghost" href="https://vimeo.com/917486950" target="_blank" rel="noopener">Ver video de una clase</a>
+      <a class="btn ghost" href="https://www.instagram.com/p/DT-D4UijUCc/" target="_blank" rel="noopener">Ver video de una clase o función</a>
     </div>
   </div>
 </section>
@@ -282,7 +357,7 @@
     </div>
     <div class="lead-form reveal">
       <h3>Clase de prueba</h3><div class="sub">Dejanos tus datos y coordinamos tu clase de prueba.</div>
-      <iframe src="https://tally.so/embed/3EOBbr?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" data-tally-src="https://tally.so/embed/3EOBbr?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="560" frameborder="0" marginheight="0" marginwidth="0" title="URT - Form Corto"></iframe>
+      <iframe src="https://tally.so/embed/3EOBbr?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" data-tally-src="https://tally.so/embed/3EOBbr?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="420" frameborder="0" marginheight="0" marginwidth="0" title="URT - Form Corto"></iframe>
     </div>
   </div>
 </section>
@@ -301,5 +376,38 @@
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 </script>
 <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+<script>
+  function slideFlyers(dir){var t=document.getElementById('flyerTrack');
+    if(t){var card=t.querySelector('.flyer');var step=card?card.offsetWidth+22:320;t.scrollBy({left:dir*step,behavior:'smooth'});}}
+</script>
+<script>
+  // Tally: ajusta la altura del iframe al contenido (evita el hueco en blanco)
+  window.addEventListener('message',function(e){
+    if(!/tally\.so/.test(e.origin))return;
+    var d=e.data;
+    if(typeof d==='string'){try{d=JSON.parse(d);}catch(err){return;}}
+    var h=d&&(d.height||(d.payload&&d.payload.height));
+    if(!h)return;
+    document.querySelectorAll('iframe[src*="tally.so"]').forEach(function(f){
+      if(f.contentWindow===e.source)f.style.height=h+'px';
+    });
+  });
+</script>
+<script>
+  (function(){
+    var b=document.getElementById('burger'),m=document.getElementById('mobmenu');
+    if(!b||!m)return;
+    function toggle(open){
+      b.classList.toggle('open',open); m.classList.toggle('open',open);
+      m.style.display=open?'flex':'none';
+      document.body.classList.toggle('nav-open',open);
+      b.setAttribute('aria-expanded',open?'true':'false');
+    }
+    b.addEventListener('click',function(){toggle(!b.classList.contains('open'));});
+    m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){toggle(false);});});
+    addEventListener('keydown',function(e){if(e.key==='Escape')toggle(false);});
+    addEventListener('resize',function(){if(innerWidth>880)toggle(false);});
+  })();
+</script>
 </body>
 </html>
